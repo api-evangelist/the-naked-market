@@ -1,0 +1,63 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  https://www.thenakedmarket.com/llms.txt + https://www.thenakedmarket.com/.well-known/ucp +
+  https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json + live POST probe of the endpoint
+name: The Naked Market Storefront MCP (Universal Commerce Protocol)
+status: live
+transport: streamable-http
+endpoint: https://www.thenakedmarket.com/api/ucp/mcp
+discovery: https://www.thenakedmarket.com/.well-known/ucp
+protocol:
+  name: Universal Commerce Protocol (UCP) shopping service over MCP/JSON-RPC
+  spec: https://ucp.dev/2026-04-08/specification/overview/
+  schema: https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
+  versions:
+  - '2026-04-08'
+  - '2026-01-23'
+platform: Shopify (native UCP support; backing shop tomorrow-ranch.myshopify.com)
+authentication: >-
+  Requests must identify the calling agent via a UCP-Agent profile URI (meta.ucp-agent.profile /
+  UCP-Agent header); an unauthenticated tools/list probe returns JSON-RPC error -32001
+  "UCP discovery failed" (invalid_profile_url), confirming the endpoint is live and enforcing
+  agent identification. Checkout completion requires explicit buyer approval; payment is handled
+  via Shop Pay / configured payment handlers, never by the agent.
+rate_limits: Rate limited per IP; agents are instructed to back off on 429 responses.
+capabilities:
+- dev.ucp.shopping.catalog.search
+- dev.ucp.shopping.catalog.lookup
+- dev.ucp.shopping.cart
+- dev.ucp.shopping.checkout
+- dev.ucp.shopping.fulfillment
+- dev.ucp.shopping.discount
+- dev.ucp.shopping.order
+tools:
+- name: search_catalog
+  description: Search the store catalog for products matching the buyer's intent
+- name: lookup_catalog
+  description: Look up catalog entries by identifier
+- name: get_product
+  description: Retrieve a single product
+- name: create_cart
+  description: Create a cart with desired items
+- name: get_cart
+  description: Retrieve a cart
+- name: update_cart
+  description: Update cart contents
+- name: cancel_cart
+  description: Cancel a cart
+- name: create_checkout
+  description: Start the purchase flow
+- name: get_checkout
+  description: Retrieve a checkout
+- name: update_checkout
+  description: Set shipping address and method on a checkout
+- name: complete_checkout
+  description: Finalize the purchase (requires explicit buyer approval of payment)
+- name: cancel_checkout
+  description: Cancel a checkout
+- name: get_order
+  description: Retrieve an order
+related:
+  shop_skill: https://shop.app/SKILL.md
+  agent_instructions: ../llms/the-naked-market-llms.txt

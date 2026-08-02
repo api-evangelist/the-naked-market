@@ -1,8 +1,29 @@
 aid: the-naked-market
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/the-naked-market.png
 name: The Naked Market
-description: 'The Naked Market is a company surfaced as a portfolio company of hv-capital and added to
-  the API Evangelist network as a stub for enrichment. Sector: consumer. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: 'The Naked Market is a San Francisco-based consumer packaged goods (CPG) company and
+  brand incubator founded in 2019 by Harrison Fugman, Alex Kost, and Tim Marbach. It uses a "fast fail"
+  end-to-end infrastructure to take a food or beverage product from idea to market in roughly three
+  months, launching and acquiring socially conscious direct-to-consumer brands across snacks, drinks,
+  and better-for-you categories. Its portfolio has included Project Breakfast, Flock crispy chicken
+  chips, Avocrazy avocado puffs, Beach House Bowls, Rob''s Backstage Popcorn, and the low-alcohol
+  aperitif brand Haus. The company raised $27.5 million in Series A funding in 2021 and is backed by
+  HV Capital. It operates as a consumer brand holding company and does not publish a traditional
+  developer API program, but its Shopify-hosted storefront exposes an agent-commerce surface:
+  llms.txt agent instructions, a Universal Commerce Protocol (UCP) merchant profile, OpenID Connect
+  discovery, and a live MCP endpoint for catalog search, cart, and buyer-approved checkout.'
 url: https://raw.githubusercontent.com/api-evangelist/the-naked-market/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,13 +33,45 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Consumer
+- Consumer Packaged Goods
+- Food and Beverage
+- Direct to Consumer
+- Snacks
+- Brand Incubator
+- E-Commerce
+common:
+- type: Website
+  url: https://thenakedmarket.com
+- type: Support
+  url: https://www.thenakedmarket.com/pages/contact
+- type: Blog
+  url: https://www.thenakedmarket.com/blogs/news
+- type: DomainSecurity
+  url: security/the-naked-market-domain-security.yml
+- type: WellKnown
+  url: well-known/the-naked-market-well-known.yml
+- type: LLMsTxt
+  url: llms/the-naked-market-llms.txt
+- type: MCPServer
+  url: mcp/the-naked-market-mcp.yml
+- type: Authentication
+  url: authentication/the-naked-market-authentication.yml
+- type: OAuthScopes
+  url: scopes/the-naked-market-scopes.yml
+- type: Conformance
+  url: conformance/the-naked-market-conformance.yml
 apis: []
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 10
+  pass: local-v1

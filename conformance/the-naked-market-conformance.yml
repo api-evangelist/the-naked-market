@@ -1,0 +1,36 @@
+generated: '2026-07-21'
+method: searched
+source: live probes of thenakedmarket.com well-known endpoints and the UCP MCP endpoint
+name: The Naked Market standards conformance
+standards:
+- id: oidc
+  conforms: true
+  evidence: >-
+    /.well-known/openid-configuration returns HTTP 200 with a full OpenID Connect discovery
+    document (Shopify Customer Accounts issuer, RS256 ID tokens, authorization_code flow).
+- id: oauth2
+  conforms: true
+  evidence: >-
+    /.well-known/oauth-authorization-server returns HTTP 200 (RFC 8414 authorization server
+    metadata); authorization_code + refresh_token + jwt-bearer grants with PKCE S256.
+- id: ucp
+  conforms: true
+  evidence: >-
+    /.well-known/ucp returns the Universal Commerce Protocol merchant profile (versions
+    2026-04-08 and 2026-01-23) declaring shopping service capabilities: catalog search/lookup,
+    cart, checkout, fulfillment, discount, order.
+- id: mcp
+  conforms: true
+  evidence: >-
+    POST /api/ucp/mcp is a live MCP/JSON-RPC endpoint (responds with structured JSON-RPC error
+    -32001 requiring a UCP-Agent profile); tool surface defined by the UCP shopping OpenRPC
+    schema.
+- id: llms-txt
+  conforms: true
+  evidence: /llms.txt returns HTTP 200 with agent instructions (mirrors /agents.md).
+- id: rfc9457
+  conforms: false
+  evidence: No application/problem+json error surface published.
+- id: security-txt
+  conforms: false
+  evidence: /.well-known/security.txt and /security.txt both return HTTP 404.

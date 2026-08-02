@@ -1,0 +1,47 @@
+generated: '2026-07-21'
+method: searched
+source: https://thenakedmarket.com/.well-known/openid-configuration (live fetch, HTTP 200)
+name: The Naked Market authentication profile
+notes: >-
+  The Naked Market is a Shopify-hosted storefront; customer authentication is provided by
+  Shopify Customer Accounts via OpenID Connect. The store publishes both
+  /.well-known/openid-configuration and /.well-known/oauth-authorization-server on its own
+  domain. The agent-commerce (UCP/MCP) surface separately requires a UCP-Agent profile URI on
+  each request; storefront read endpoints (/products/{handle}.json,
+  /collections/{handle}/products.json) are unauthenticated.
+schemes:
+- id: shopify-customer-accounts-oidc
+  type: openIdConnect
+  issuer: https://shopify.com/authentication/52367163575
+  authorization_endpoint: https://shopify.com/authentication/52367163575/oauth/authorize
+  token_endpoint: https://shopify.com/authentication/52367163575/oauth/token
+  end_session_endpoint: https://shopify.com/authentication/52367163575/logout
+  jwks_uri: https://shopify.com/authentication/52367163575/.well-known/jwks.json
+  grant_types:
+  - authorization_code
+  - refresh_token
+  - urn:ietf:params:oauth:grant-type:jwt-bearer
+  response_types:
+  - code
+  pkce:
+    supported: true
+    code_challenge_methods:
+    - S256
+  token_endpoint_auth_methods:
+  - client_secret_basic
+  id_token_signing_algs:
+  - RS256
+  scopes:
+  - openid
+  - email
+  - customer-account-api:full
+  - customer-account-mcp-api:full
+- id: ucp-agent-profile
+  type: http
+  description: >-
+    UCP MCP endpoint (POST /api/ucp/mcp) requires agent identification via a UCP-Agent profile
+    URI (meta.ucp-agent.profile / UCP-Agent header) per the Universal Commerce Protocol;
+    checkout completion additionally requires explicit buyer approval.
+- id: anonymous-storefront-read
+  type: none
+  description: Product and collection JSON endpoints and search require no authentication.

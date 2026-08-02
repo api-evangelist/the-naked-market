@@ -1,0 +1,32 @@
+generated: '2026-07-21'
+method: searched
+source: live HTTP probes of https://thenakedmarket.com and https://www.thenakedmarket.com
+host: thenakedmarket.com
+notes: >-
+  Shopify-hosted storefront (backing shop tomorrow-ranch.myshopify.com). The OIDC and OAuth
+  authorization-server documents are served by Shopify Customer Accounts for this store; the
+  UCP profile is the store's Universal Commerce Protocol merchant discovery document.
+paths:
+- path: /.well-known/security.txt
+  status: 404
+- path: /security.txt
+  status: 404
+- path: /.well-known/openid-configuration
+  status: 200
+  file: the-naked-market-openid-configuration.json
+- path: /.well-known/oauth-authorization-server
+  status: 200
+  file: the-naked-market-oauth-authorization-server.json
+- path: /.well-known/ucp
+  status: 200
+  file: the-naked-market-ucp.json
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+- path: /llms.txt
+  status: 200
+  file: ../llms/the-naked-market-llms.txt
+- path: /agents.md
+  status: 200
+  file: ../llms/the-naked-market-agents.md

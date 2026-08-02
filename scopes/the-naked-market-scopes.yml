@@ -1,0 +1,18 @@
+generated: '2026-07-21'
+method: searched
+source: https://thenakedmarket.com/.well-known/openid-configuration (scopes_supported, live fetch)
+name: The Naked Market OAuth scopes
+docs: https://shopify.dev/docs/api/customer
+notes: >-
+  Scopes are published in the store's OIDC discovery document, served by Shopify Customer
+  Accounts for this storefront. They gate the Shopify Customer Account API and its MCP surface
+  for authenticated customers of this store.
+scopes:
+- scope: openid
+  description: OpenID Connect authentication (ID token issuance).
+- scope: email
+  description: Access to the customer's email address and verification status claims.
+- scope: customer-account-api:full
+  description: Full access to the Shopify Customer Account API on behalf of the customer.
+- scope: customer-account-mcp-api:full
+  description: Full access to the Shopify Customer Account MCP API on behalf of the customer.
