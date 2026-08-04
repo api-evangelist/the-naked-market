@@ -4,7 +4,8 @@ source: >-
   https://www.thenakedmarket.com/llms.txt + https://www.thenakedmarket.com/.well-known/ucp +
   https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json + live POST probe of the endpoint
 name: The Naked Market Storefront MCP (Universal Commerce Protocol)
-status: live
+status: published
+status_raw: live
 transport: streamable-http
 endpoint: https://www.thenakedmarket.com/api/ucp/mcp
 discovery: https://www.thenakedmarket.com/.well-known/ucp
