@@ -1,8 +1,7 @@
 generated: '2026-07-21'
 method: searched
-source: >-
-  https://www.thenakedmarket.com/llms.txt + https://www.thenakedmarket.com/.well-known/ucp +
-  https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json + live POST probe of the endpoint
+source: https://www.thenakedmarket.com/llms.txt + https://www.thenakedmarket.com/.well-known/ucp + https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
+  + live POST probe of the endpoint
 name: The Naked Market Storefront MCP (Universal Commerce Protocol)
 status: published
 status_raw: live
@@ -17,12 +16,11 @@ protocol:
   - '2026-04-08'
   - '2026-01-23'
 platform: Shopify (native UCP support; backing shop tomorrow-ranch.myshopify.com)
-authentication: >-
-  Requests must identify the calling agent via a UCP-Agent profile URI (meta.ucp-agent.profile /
-  UCP-Agent header); an unauthenticated tools/list probe returns JSON-RPC error -32001
-  "UCP discovery failed" (invalid_profile_url), confirming the endpoint is live and enforcing
-  agent identification. Checkout completion requires explicit buyer approval; payment is handled
-  via Shop Pay / configured payment handlers, never by the agent.
+authentication: Requests must identify the calling agent via a UCP-Agent profile URI (meta.ucp-agent.profile
+  / UCP-Agent header); an unauthenticated tools/list probe returns JSON-RPC error -32001 "UCP discovery
+  failed" (invalid_profile_url), confirming the endpoint is live and enforcing agent identification. Checkout
+  completion requires explicit buyer approval; payment is handled via Shop Pay / configured payment handlers,
+  never by the agent.
 rate_limits: Rate limited per IP; agents are instructed to back off on 429 responses.
 capabilities:
 - dev.ucp.shopping.catalog.search
@@ -62,3 +60,9 @@ tools:
 related:
   shop_skill: https://shop.app/SKILL.md
   agent_instructions: ../llms/the-naked-market-llms.txt
+deployment:
+  mode: remote
+  verified: searched
+  tools: 13
+  checked: '2026-08-12'
+  source: catalog MCP census
